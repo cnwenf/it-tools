@@ -5,6 +5,7 @@ ENV NPM_CONFIG_LOGLEVEL warn
 ENV CI true
 WORKDIR /app
 COPY package.json pnpm-lock.yaml ./
+RUN npm config set registry http://registry.npmmirror.com
 RUN npm install -g pnpm && pnpm i --frozen-lockfile
 COPY . .
 RUN pnpm build
